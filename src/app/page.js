@@ -58,7 +58,7 @@ export default function Page() {
 
       {/* Add the About Image Below */}
 <div className="about-section">
-  <img src="./Assets/about4.png" alt="About" className="about-image" />
+  <img src="./ABOUT4.png" alt="About" className="about-image" />
 </div>
 <h1 className="testimonials">
   Testimonails
