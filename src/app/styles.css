@@ -1,0 +1,276 @@
+/* styles.css */
+
+/* Container Styles */
+.container {
+    position: relative;
+    height: 70vh;
+    background-color: #054E30; /* Set the container background color */
+    margin-top: 0px;
+    overflow: hidden; /* Ensure the overlay doesn't spill out */
+  }
+  
+  /* Overlay Styles */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/Assets/a.png'); /* Use the image as the overlay */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4; /* Reduce the transparency of the image */
+    z-index: 1;
+  }
+  
+  
+  /* Heading Container */
+  .heading-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    color: white;
+    /* width: 100%; */
+  }
+  
+  
+  .highlight {
+    color: #cfa256; /* Yellow hex color */
+  }
+  
+  
+  /* Main Heading */
+  .main-heading {
+    margin-top: 0px;
+    font-size: 3.5rem;
+    margin: 0;
+  }
+  .background{
+    background-color: black;
+  }
+/* Sub Heading */
+.sub-heading {
+    font-size: 1rem;
+    margin-top: 0px;
+    margin-bottom: 80px;
+
+    color: white;
+    font-weight: 100; /* Makes the font very thin */
+  }
+  
+/* Info Container */
+/* Info Container */
+.info-container {
+    width: 100%; /* Full width of the parent container */
+
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr; /* Make the first column wider */
+    gap: 20px; /* Add spacing between columns */
+    padding: 0 20px;
+    align-items: start; /* Align items at the top of their column */
+    width: 100%;
+  }
+/* Navbar Items */
+.navbar-items {
+    display: flex; /* Arrange items horizontally */
+    gap: 50px; /* Add spacing between items */
+    margin-left: auto; /* Push items to the right side */
+  }
+  /* Info Box */
+.info-box {
+    border: 2px solid #cfa256; /* Yellow border */
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: justify;
+    /* max-width: 300px; Optional: Set a maximum width */
+    width: 100%;
+  }
+  .about-section {
+    display: flex;
+    justify-content: flex-start; /* Align content to the start */
+    padding: 0; /* Remove padding from the section */
+    margin: 0; /* Remove any default margin */
+    width: 100%; /* Ensure full width */
+  }
+  
+  /* About Image */
+  .about-image {
+    /* max-width: 1200px; Limit maximum width */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    object-fit: cover; /* Ensure the image scales properly */
+  }
+  .testimonials {
+    color: white;
+    font-size: 4rem;
+    text-align: center; /* Center-align the text */
+    margin: 20px 0; /* Add vertical spacing above and below */
+  }
+  
+  
+  
+  /* Bitcoin Image */
+  .info-box img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  /* Bitcoin Image */
+.btcimage {
+    justify-self: center; /* Center the image in its column */
+    align-self: start; /* Align the image to the top of the column */
+    height: 240px;
+    width: auto;
+  }
+  /* Small Button */
+.small-button {
+    display: block;
+    margin-top: 15px; /* Space between the text and the button */
+    padding: 8px 16px; /* Adjust padding for a small button */
+    background-color: #cfa256; /* Gold color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1.5rem; /* Small font size */
+    font-weight: bold;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
+    width:100%;
+  }
+
+  
+.third-column {
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center content horizontally */
+    gap: 10px; /* Add spacing between the images */
+  }
+  
+  /* Users Image */
+  .users-image {
+    /* width: 100%; Take full column width */
+    width: 130px; /* Limit the size of the image */
+    height: 115px; /* Limit the size of the image */
+
+    justify-self: center; /* Center the image horizontally */
+    align-self: start; /* Align the image to the top of the column */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    object-fit: contain; /* Ensure the image fits within its container */
+  }
+  
+  /* Star Image */
+  .star-image {
+    /* width: 100%; Take full column width */
+    width: 130px; /* Limit the size of the image */
+    height: 115px; /* Limit the size of the image */
+
+    justify-self: center; /* Center the image horizontally */
+    align-self: start; /* Align the image to the top of the column */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    object-fit: contain; /* Ensure the image fits within its container */
+  }
+  
+  
+  .small-button:hover {
+    background-color: #b28f47; /* Slightly darker gold on hover */
+  }
+
+
+  /* Card Container */
+.card-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 20px; /* Spacing between cards */
+    padding: 20px; /* Add padding around the cards */
+    scrollbar-width: thin; /* For custom scrollbars (Firefox) */
+  }
+  
+  .card-container::-webkit-scrollbar {
+    height: 8px; /* Height of the scrollbar */
+  }
+  
+  .card-container::-webkit-scrollbar-thumb {
+    background-color: #cfa256; /* Scrollbar thumb color */
+    border-radius: 4px; /* Rounded scrollbar thumb */
+  }
+  
+  .card-container::-webkit-scrollbar-track {
+    background-color: #333; /* Scrollbar track color */
+  }
+  
+/* Individual Cards */
+.card {
+    flex: 0 0 auto; /* Prevent cards from shrinking and enable horizontal scrolling */
+    width: 40%; /* Card width */
+    height: 40vh; /* Card height */
+    background-color: #19875a; /* Set green background for cards */
+    color: white; /* Card text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Rounded corners */
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
+    border: 2px solid #cfa256; /* Optional: Add a yellow border for contrast */
+  }
+  
+  
+  
+ 
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .main-heading {
+      font-size: 2rem;
+    }
+    .sub-heading {
+      font-size: 1rem;
+    }
+
+    .info-container {
+        grid-template-columns: 2fr 1fr 1fr; /* Keep the three-column layout */
+        gap: 10px; /* Slightly smaller gap on small screens */
+      }
+    
+      .info-box {
+        max-width: 100%; /* Adjust info-box to fit properly */
+      }
+    
+      .btcimage {
+        max-width: 100px; /* Reduce image size on small screens */
+        justify-self: center;
+      }
+    
+      .small-button {
+        padding: 10px; /* Slightly smaller button padding */
+        font-size: 0.7rem; /* Reduce button font size for smaller screens */
+      }
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 50px;
+    color: white;
+    font-size: 18px;
+  }
+  
+  /* Logo Styles */
+  .logo {
+    height: 40px;
+    width: auto;
+  }
+  
