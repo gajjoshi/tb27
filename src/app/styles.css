@@ -102,6 +102,12 @@
     margin: 0; /* Remove any default margin */
     width: 100%; /* Ensure full width */
   }
+  .active-image {
+    box-shadow: 
+    0 0 30px rgba(255, 255, 0, 1), /* Bright yellow glow */
+    0 0 60px rgba(255, 215, 0, 0.8), /* Outer yellow glow */
+    0 0 100px rgba(255, 255, 0, 0.5); /* Faint extended glow */  }
+  
   
   /* About Image */
   .about-image {
@@ -230,6 +236,8 @@
   align-items: center; /* Vertically align the buttons */
   gap: 10px; /* Add space between the buttons */
   margin-top: 20px; /* Add some spacing above the toggles */
+  margin-left: 5%; /* Add some spacing above the toggles */
+
 }
 
 /* Toggle Button */
@@ -312,6 +320,19 @@
     font-size: 1rem;
     margin: 0;
   }
+  .course-image,
+.course-image-overview {
+  border-radius: 10px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling and shadow changes */
+}
+
+.course-image:hover,
+.course-image-overview:hover {
+  transform: scale(1.1); /* Slightly enlarge the image on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a more pronounced shadow */
+}
+
   
   .inner-card p {
     font-size: 0.85rem;
@@ -332,7 +353,15 @@
     align-items: center; /* Vertically align images */
     gap: 5%; /* Space between the images */
     margin-top: 20px; /* Add spacing above the container */
-    margin-left: 50px; /* Align the container with the toggle buttons */
+    margin-left: 5%; /* Align the container with the toggle buttons */
+  }
+  .course-images-container2 {
+    display: flex; /* Flexbox to align images side by side */
+    justify-content: flex-start; /* Align the images to the left */
+    align-items: center; /* Vertically align images */
+    gap: 5%; /* Space between the images */
+    margin-top: 7%; /* Add spacing above the container */
+    margin-left: 5%; /* Align the container with the toggle buttons */
   }
   
   .course-image {

@@ -135,15 +135,40 @@ export default function Page() {
         </button>
       </div>
       <div className="course-images-container">
-  <img src="/Assets/course1.png" alt="Course 1" className="course-image" />
+  <img
+    src="/Assets/course1.png"
+    alt="Course 1"
+    className={`course-image ${
+      activeToggle === "COURSE 1" ? "active-image" : ""
+    }`}
+  />
   <img
     src="/Assets/course1overview.png"
     alt="Course 1 Overview"
+    className={`course-image-overview ${
+      activeToggle === "COURSE 1" ? "active-image" : ""
+    }`}
+  />
+</div>
+
+
+
+
+
+<div className="course-images-container2">
+  <img src="/Assets/course2.png" alt="Course 2" className="course-image" />
+  <img
+    src="/Assets/course2overview.png"
+    alt="Course 2 Overview"
     className="course-image-overview"
   />
 </div>
 
 
+
+
+
     </div>
+    
   );
 }
