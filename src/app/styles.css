@@ -119,7 +119,6 @@
     color: white;
     font-size: 2rem;
     text-align: center; /* Center-align the text */
-    margin: 20px 0; /* Add vertical spacing above and below */
   }
   .flake-container {
     position: relative; /* Ensure proper layout flow */
@@ -209,7 +208,7 @@
   /* Card Container */
   .testimonial-section {
     position: relative;
-    padding: 50px;
+    padding: 3%;
     background-color: black;
     color: white;
     overflow: hidden; /* Ensures no unwanted overflow */
@@ -219,14 +218,13 @@
     text-align: center;
     font-size: 2rem;
     color: white;
-    margin-bottom: 20px;
     z-index: 2;
     position: relative;
   }
   
   .wave-overlay {
     position: absolute;
-    top: 100;
+    top: 10%;
     left: 0;
 
     /* z-index: 1; */ 
@@ -288,6 +286,7 @@
     padding: 20px;
     z-index: 2;
     position: relative; /* Ensure cards appear above the wave */
+    
   }
   .card-container::-webkit-scrollbar {
     display: none; /* For Chrome, Safari, and Opera: hides scrollbar */
@@ -451,6 +450,12 @@
       margin-top: -15%; /* Move the image upward to overlap 10% */
       z-index: 0; /* Keep it behind other elements */
     }
+    @media (max-width: 768px) { /* Define mobile screen threshold */
+      .navbar-items {
+        display: none; /* Hide the navbar items */
+      }
+    }
+    
     
     .flake-image {
       position: absolute; /* Position the image precisely */
@@ -512,13 +517,24 @@
     }
 
     .info-container {
-        grid-template-columns: 2fr 1fr 1fr; /* Keep the three-column layout */
+      justify-content: flex-start;
+        grid-template-columns: 3fr 1fr 1fr; /* Keep the three-column layout */
         gap: 10px; /* Slightly smaller gap on small screens */
       }
     
       .info-box {
-        max-width: 100%; /* Adjust info-box to fit properly */
+        margin: 0; /* Remove any default margin */
+        padding: 20px; /* Add internal spacing */
+        border: 2px solid #cfa256; /* Maintain border styling */
+        background-color: black;
+        color: white;
+        border-radius: 10px; /* Rounded corners */
+        text-align: justify; /* Optional: Justify text for better readability */
+        width: 100%; /* Ensure it uses the full available width */
+        box-sizing: border-box; /* Include padding in width calculations */
+        font-size: 0.5rem;
       }
+      
     
       .btcimage {
         max-width: 100px; /* Reduce image size on small screens */
@@ -547,5 +563,13 @@
   .logo {
     height: 40px;
     width: auto;
+  }
+  @keyframes scroll-cards {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
   }
   

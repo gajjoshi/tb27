@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { Geologica } from "next/font/google";
 
@@ -9,7 +9,17 @@ const geologica = Geologica({
   weight: ["400", "700"], // Include the required font weights
 });
 
+
 export default function Page() {
+  // Inside your component
+const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const handleResize = () => setIsMobile(window.innerWidth <= 768); // Mobile width threshold
+  handleResize(); // Check on mount
+  window.addEventListener("resize", handleResize); // Listen for window resize
+  return () => window.removeEventListener("resize", handleResize); // Cleanup
+}, []);
   // State to track the active toggle
   const [activeToggle, setActiveToggle] = useState("COURSE 1");
 
@@ -43,15 +53,23 @@ export default function Page() {
           <div className="info-container">
             {/* First Column: Info Box */}
             <div className="info-column">
-              <div className="info-box">
-                <p>
-                  Leverage cutting-edge AI technology to stay ahead in the
-                  markets. Our bot analyzes market trends and executes trades
-                  with precision, ensuring you maximize your profits while
-                  minimizing risks. Enjoy a seamless trading experience with our
-                  user-friendly interface and comprehensive analytics dashboard{" "}
-                </p>
-              </div>
+            <div className="info-box">
+  {isMobile ? (
+    <p>
+      Discover mobile-friendly insights with our cutting-edge AI. Optimize
+      trading and stay ahead in the markets on the go.
+    </p>
+  ) : (
+    <p>
+      Leverage cutting-edge AI technology to stay ahead in the markets. Our bot
+      analyzes market trends and executes trades with precision, ensuring you
+      maximize your profits while minimizing risks. Enjoy a seamless trading
+      experience with our user-friendly interface and comprehensive analytics
+      dashboard.
+    </p>
+  )}
+</div>
+
               <button className="small-button">BUY A COURSE NOW</button>
             </div>
 
@@ -86,7 +104,7 @@ export default function Page() {
           <img src="/./Assets/flake.png" alt="Wave" className="wave-image" />
         </div>
         <div className="card-container">
-          {[...Array(5)].map((_, index) => (
+          {[...Array(20)].map((_, index) => (
             <div key={index} className="card">
               <div className="card-image">
                 <img src="./Assets/image 8.png" alt={`Card Image ${index + 1}`} />
