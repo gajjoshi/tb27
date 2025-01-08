@@ -1,4 +1,6 @@
-import React from "react";
+
+"use client";
+import React, { useState } from "react";
 import "./styles.css";
 import { Geologica } from "next/font/google";
 
@@ -8,6 +10,14 @@ const geologica = Geologica({
 });
 
 export default function Page() {
+  // State to track the active toggle
+  const [activeToggle, setActiveToggle] = useState("COURSE 1");
+
+  // Function to handle toggle activation
+  const activateToggle = (course) => {
+    setActiveToggle(course);
+  };
+
   return (
     <div className="background">
       {/* Navbar */}
@@ -70,35 +80,70 @@ export default function Page() {
       <div className="about-section">
         <img src="./ABOUT4.png" alt="About" className="about-image" />
       </div>
-      <h1 className="testimonials">Testimonails</h1>
+      <h1 className="testimonials">Testimonials</h1>
       <div className="testimonial-section">
-      <div className="wave-overlay">
-        <img src="/./Assets/image 14.png" alt="Wave" className="wave-image" />
-      </div>
-      <div className="card-container">
-  {[...Array(3)].map((_, index) => (
-    <div key={index} className="card">
-      <div className="card-image">
-        <img src="./Assets/image 8.png" alt={`Card Image ${index + 1}`} />
-      </div>
-      <div className="card-content">
-        <div className="inner-card">
-          <h2>COURSE</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Aliquam aliquet nisi nisi, eu lorem ipsum dolor sit amet.
-          </p>
-          <div className="date">23/12/2024</div>
+        <div className="wave-overlay">
+          <img src="/./Assets/flake.png" alt="Wave" className="wave-image" />
+        </div>
+        <div className="card-container">
+          {[...Array(5)].map((_, index) => (
+            <div key={index} className="card">
+              <div className="card-image">
+                <img src="./Assets/image 8.png" alt={`Card Image ${index + 1}`} />
+              </div>
+              <div className="card-content">
+                <div className="inner-card">
+                  <h2>COURSE</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aliquam aliquet nisi nisi, eu lorem ipsum dolor sit amet.
+                  </p>
+                  <div className="date">23/12/2024</div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  ))}
+
+      {/* Toggle Buttons */}
+      <h1 className="testimonials">Toggle Courses</h1>
+      <div className="toggle-container">
+        <button
+          className={`toggle-button ${
+            activeToggle === "COURSE 1" ? "active" : ""
+          }`}
+          onClick={() => activateToggle("COURSE 1")}
+        >
+          COURSE 1
+        </button>
+        <button
+          className={`toggle-button ${
+            activeToggle === "COURSE 2" ? "active" : ""
+          }`}
+          onClick={() => activateToggle("COURSE 2")}
+        >
+          COURSE 2
+        </button>
+        <button
+          className={`toggle-button ${
+            activeToggle === "COURSE 3" ? "active" : ""
+          }`}
+          onClick={() => activateToggle("COURSE 3")}
+        >
+          COURSE 3
+        </button>
+      </div>
+      <div className="course-images-container">
+  <img src="/Assets/course1.png" alt="Course 1" className="course-image" />
+  <img
+    src="/Assets/course1overview.png"
+    alt="Course 1 Overview"
+    className="course-image-overview"
+  />
 </div>
 
-</div>
-{/* <div className="testimonial-element">
-  <img src="./Assets/image 14.png"></img>
-</div> */}
+
     </div>
   );
 }

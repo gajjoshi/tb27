@@ -3,8 +3,10 @@
 /* Container Styles */
 .container {
     position: relative;
-    height: 70vh;
-    background-color: #054E30; /* Set the container background color */
+    height:70vh;
+    /* background-color: #054E30; Set the container background color */
+     background-color: #054E30; 
+
     margin-top: 0px;
     overflow: hidden; /* Ensure the overlay doesn't spill out */
   }
@@ -14,7 +16,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     background-image: url('/Assets/a.png'); /* Use the image as the overlay */
     background-size: cover;
@@ -109,7 +111,7 @@
   }
   .testimonials {
     color: white;
-    font-size: 4rem;
+    font-size: 2rem;
     text-align: center; /* Center-align the text */
     margin: 20px 0; /* Add vertical spacing above and below */
   }
@@ -202,24 +204,59 @@
   
   .wave-overlay {
     position: absolute;
-    top: 0;
+    top: 100;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-   /* Ensures the wave image does not block interaction with cards */
+
+    /* z-index: 1; */ 
+    /* display: flex;
+    justify-content: center; /* Center the wave image */
+    /* align-items: center; Center the wave image vertically */ 
   }
   
   .wave-image {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Make the wave span full width */
+    height: auto; /* Maintain aspect ratio */
     opacity: 0.8; /* Adjust for blending effect */
-    /* object-fit: cover; */
-    /* margin-left: -50px;
-    margin-top: 100px; */
+    object-fit: cover; /* Ensure the image covers the container without being cropped */
+
+
   }
-  
+  /* Toggle Container */
+
+/* Toggle Container */
+.toggle-container {
+  display: flex;
+  margin-left: 50px; /* Add 50px spacing from the left */
+  align-items: center; /* Vertically align the buttons */
+  gap: 10px; /* Add space between the buttons */
+  margin-top: 20px; /* Add some spacing above the toggles */
+}
+
+/* Toggle Button */
+.toggle-button {
+  padding: 10px 20px;
+  border: 2px solid #19875a; /* Green border color */
+  border-radius: 20px; /* Rounded corners */
+  background-color: black; /* Default background color */
+  color: #19875a; /* Green text color */
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Active Toggle Button */
+.toggle-button.active {
+  background-color: #19875a; /* Green background color for active */
+  color: white; /* White text color for active */
+}
+
+/* Hover Effect */
+.toggle-button:hover {
+  background-color: #19875a; /* Green background on hover */
+  color: white; /* White text on hover */
+}
+
   .card-container {
     display: flex;
     overflow-x: auto; /* Enables horizontal scrolling */
@@ -228,10 +265,13 @@
     z-index: 2;
     position: relative; /* Ensure cards appear above the wave */
   }
+  .card-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera: hides scrollbar */
+  }
   
   .card {
     flex: 0 0 auto;
-    width: 32%;
+    width: 500px;
     height: 40vh;
     background-color: #19875a;
     color: white;
@@ -247,6 +287,7 @@
   }
   
   .card-image {
+    z-index: 10;
     width: 40%;
   }
   
@@ -281,13 +322,80 @@
   .inner-card .date {
     font-size: 0.75rem;
     font-style: italic;
-    margin-top: auto;
+    margin-top: auto
+    
+    ;
   }
- 
+  .course-images-container {
+    display: flex; /* Flexbox to align images side by side */
+    justify-content: flex-start; /* Align the images to the left */
+    align-items: center; /* Vertically align images */
+    gap: 5%; /* Space between the images */
+    margin-top: 20px; /* Add spacing above the container */
+    margin-left: 50px; /* Align the container with the toggle buttons */
+  }
+  
+  .course-image {
+    width: 50vw; /* Adjust width for the first image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+  }
+  
+  .course-image-overview {
+    width: 30vw; /* Adjust width for the second image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    margin-right: 900px;
+  }
   
   
   /* Responsive Styles */
   @media (max-width: 768px) {
+    /* Toggle Container */
+.toggle-container {
+  display: flex;
+  margin-left: 50px; /* Add 50px spacing from the left */
+  align-items: center; /* Vertically align the buttons */
+  gap: 10px; /* Add space between the buttons */
+  margin-top: 20px; /* Add some spacing above the toggles */
+}
+
+
+
+    /* Toggle Button */
+.toggle-button {
+  padding: 5px 10px;
+  border: 2px solid #19875a; /* Green border color */
+  border-radius: 20px; /* Rounded corners */
+  background-color: black; /* Default background color */
+  color: #19875a; /* Green text color */
+  font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+    .card {
+      flex: 0 0 auto;
+      width: 150px;
+      height: 200px;
+      background-color: #19875a;
+      color: white;
+      display: flex;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+      border: 2px solid #cfa256;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(241, 4, 4, 0.2);
+      position: relative;
+    }
+    
+
+
     .main-heading {
       font-size: 2rem;
     }
