@@ -165,6 +165,40 @@ export default function Page() {
 </div>
 
 
+<div className="flake-container">
+  <img src="/Assets/flake3.png" alt="Flake" className="flake-image" />
+</div>
+<hr className="bright-yellow-hr" />
+
+
+
+<div className="emptycode">
+
+<footer className="footer">
+        <div className="contactInfo">
+          <h2>Contact Us</h2>
+          <p>
+            address, lorem ipsum dolor sit amet,<br />
+            consectetur adipiscing elit. aliquam
+          </p>
+          <p>abc@email.com</p>
+          <p>xx - xxx - xxxxx</p>
+          <p>xx - xxx - xxxxx</p>
+        </div>
+        <div className="socialLinks">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">TWITTER</a>
+          <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+        </div>
+      </footer>
+      </div>
+
+
+
+
+
+
 
 
 
