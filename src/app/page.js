@@ -56,8 +56,11 @@ useEffect(() => {
             <div className="info-box">
   {isMobile ? (
     <p>
-      Discover mobile-friendly insights with our cutting-edge AI. Optimize
-      trading and stay ahead in the markets on the go.
+   Leverage cutting-edge AI technology to stay ahead in the markets. Our bot
+      analyzes market trends and executes trades with precision, ensuring you
+      maximize your profits while minimizing risks. Enjoy a seamless trading
+      experience with our user-friendly interface and comprehensive analytics
+      dashboard.
     </p>
   ) : (
     <p>

@@ -518,7 +518,7 @@
 
     .info-container {
       justify-content: flex-start;
-        grid-template-columns: 3fr 1fr 1fr; /* Keep the three-column layout */
+        grid-template-columns: 2fr 1fr 1fr; /* Keep the three-column layout */
         gap: 10px; /* Slightly smaller gap on small screens */
       }
     
@@ -530,10 +530,22 @@
         color: white;
         border-radius: 10px; /* Rounded corners */
         text-align: justify; /* Optional: Justify text for better readability */
-        width: 100%; /* Ensure it uses the full available width */
+        width: 60vw; /* Ensure it uses the full available width */
+        font-size: 0.7rem;
         box-sizing: border-box; /* Include padding in width calculations */
-        font-size: 0.5rem;
+
       }
+        /* Users Image */
+  .users-image {
+    /* width: 100%; Take full column width */
+    width: 13px; /* Limit the size of the image */
+    height: 11px; /* Limit the size of the image */
+
+    justify-self: center; /* Center the image horizontally */
+    align-self: start; /* Align the image to the top of the column */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    object-fit: contain; /* Ensure the image fits within its container */
+  }
       
     
       .btcimage {
