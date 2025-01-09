@@ -121,7 +121,6 @@ height:50vh
   
   /* About Image */
   .about-image {
-    /* max-width: 1200px; Limit maximum width */
     border-radius: 10px; /* Optional: Add rounded corners */
     object-fit: cover; /* Ensure the image scales properly */
     left: 0;
@@ -179,7 +178,6 @@ height:50vh
     width:100%;
   }
   .about-section {
-    /* Style for the parent container, if needed */
     display: flex; /* Optional: Aligns the content inside */
     justify-content: flex-end; /* Aligns the small container to the left */
   }
@@ -577,6 +575,19 @@ height:50vh
   }
 }
   @media (max-width: 768px) {
+      /* About Image */
+  .about-image {
+    top: 0;
+    border-radius: 10px; /* Optional: Add rounded corners */
+    object-fit: cover; /* Ensure the image scales properly */
+    left: 0;
+    width: 100vw;
+    height: auto;
+  }
+    .about-section {
+      display: flex; /* Optional: Aligns the content inside */
+      justify-content: flex-start; /* Aligns the small container to the left */
+    }
 
     .content-wrapper {
       position: relative;
