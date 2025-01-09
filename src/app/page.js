@@ -61,9 +61,11 @@ useEffect(() => {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-        <a href="#a">A</a>
-        <a href="#b">B</a>
-        <a href="#c">C</a>
+        <a href="#a">Courses</a>
+        <a href="#b">About Us</a>
+        <a href="#c">Contact-Us</a>
+        <a href="#c">Sign Up</a>
+
       </div>
 
 
@@ -131,7 +133,7 @@ useEffect(() => {
       <h1 className="testimonials">Testimonials</h1>
       <div className="testimonial-section">
         <div className="wave-overlay">
-          <img src="/./Assets/flake.png" alt="Wave" className="wave-image" />
+          <img src="/./Assets/newflake.png" alt="Wave" className="wave-image" />
         </div>
         <div className="card-container">
           {[...Array(20)].map((_, index) => (
@@ -214,7 +216,7 @@ useEffect(() => {
 
 
 <div className="flake-container">
-  <img src="/Assets/flake3.png" alt="Flake" className="flake-image" />
+  <img src="/Assets/newflake.png" alt="Flake" className="flake-image" />
 </div>
 <hr className="bright-yellow-hr" />
 

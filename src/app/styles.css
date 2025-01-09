@@ -2,15 +2,29 @@
 
 /* Container Styles */
 .container {
+  display: flex;
     position: relative;
-    height:70vh;
-    /* background-color: #054E30; Set the container background color */
+    width: 100vw;
+    height: 70vh;    /* background-color: #054E30; Set the container background color */
      background-color: #054E30; 
-
+     overflow-x: visible;
     margin-top: 0px;
-    overflow: hidden; /* Ensure the overlay doesn't spill out */
+    left: 0;
   }
-  
+    /* Overlay Styles */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100%;
+      background-image: url('/Assets/a.png'); /* Use the image as the overlay */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.4; /* Reduce the transparency of the image */
+      z-index: 1;
+    }
   /* Overlay Styles */
   .overlay {
     position: absolute;
@@ -95,15 +109,9 @@
     /* max-width: 300px; Optional: Set a maximum width */
     width: 100%;
   }
-  .about-section {
-    display: flex;
-    justify-content: flex-start; /* Align content to the start */
-    padding: 0; /* Remove padding from the section */
-    margin: 0; /* Remove any default margin */
-    margin-top: 7%;
-
-    width: 100%; /* Ensure full width */
-  }
+  /* .about-section {
+height:50vh
+  } */
   .active-image {
     box-shadow: 
     0 0 30px rgba(255, 255, 0, 1), /* Bright yellow glow */
@@ -118,13 +126,14 @@
     object-fit: cover; /* Ensure the image scales properly */
   }
   .testimonials {
+    margin-top: 5vh;
     color: white;
     font-size: 2rem;
     text-align: center; /* Center-align the text */
   }
   .flake-container {
     position: relative; /* Ensure proper layout flow */
-    margin-top: -15%; /* Move the image upward to overlap 10% */
+    margin-top: -5%; /* Move the image upward to overlap 10% */
     z-index: 0; /* Keep it behind other elements */
   }
   
@@ -168,7 +177,43 @@
     transition: background-color 0.3s ease;
     width:100%;
   }
+  .about-section {
+    /* Style for the parent container, if needed */
+    padding: 20px;
+    display: flex; /* Optional: Aligns the content inside */
+    justify-content: flex-end; /* Aligns the small container to the left */
+  }
+  .content-wrapper {
+    display: flex; /* Enables horizontal alignment */
+    align-items: center; /* Vertically align items */
+  }
+  .diamond-image {
+    position: absolute; /* Places it at the extreme left */
 
+    width: 30%; /* Set desired width */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1; /* Ensure it stays below the container */
+
+
+  }
+  
+  .small-container {
+    background-color: black;
+    border: 3px solid #cfa256; /* Left border */
+    width: 30vw; /* Width of the rectangle */
+    height: 60vh; /* Height of the rectangle */
+    color: white; /* Text color for visibility */
+    padding: 10px; /* Optional: Inner padding */
+    display: flex; /* Optional: For aligning content inside */
+    align-items: center; /* Vertically centers content */
+    justify-content: flex-; /* Horizontally centers content */
+    margin-top: 3%;
+    margin-right: 20%;
+    border-radius: 10%;
+    z-index: 2;
+
+  }
+  
   
 .third-column {
     display: flex;
@@ -474,8 +519,7 @@
 .mobile-menu a {
   text-decoration: none;
   color:white;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1rem;
   padding: 10px;
   transition: color 0.3s ease;
   background-color: #cfa256;
@@ -500,6 +544,18 @@
   cursor: pointer;
   z-index: 1001;
 }
+.image-container {
+  display: flex; /* Ensures flexibility */
+  justify-content: flex-end; /* Aligns image to the left */
+  margin-top: -10%;
+  margin-bottom: 20%;
+}
+
+.image-container img {
+  width: 40%; /* Adjust as per your image */
+  height: auto; /* Set desired height */
+  object-fit: contain; /* Ensures image scales properly */
+}
 
 /* Animation for opening */
 @keyframes slide-in {
@@ -521,9 +577,65 @@
   }
 }
   @media (max-width: 768px) {
+
+    .content-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center; /* Center alignment for better positioning */
+      align-items: center;
+    }
+    
+    .diamond-image {
+      position: absolute; /* Ensure it can be precisely positioned */
+      width: 30%; /* Adjust size */
+      height: auto; /* Maintain aspect ratio */
+      z-index: 1; /* Ensure it stays below the container */
+      left: 10%; /* Stick to the extreme left */
+      top: 20%; /* Adjust vertical position */
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    .image-container {
+      display: flex; /* Ensures flexibility */
+      justify-content: flex-end; /* Aligns image to the left */
+      margin-top: -40%;
+      margin-bottom: 20%;
+      z-index: 4;
+      
+    }
+    
     .menu-toggle {
       display: block; /* Visible only for mobile screens */
     }
+    .small-container {
+      position: absolute;
+      width: calc(100% - 20px); /* Full width minus horizontal padding */
+      height: 30vh; /* Adjust height for dynamic content */
+      padding: 20px; /* Maintain padding */
+      box-sizing: border-box; /* Include padding in width calculation */
+      margin: 0 auto; /* Center horizontally */
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      top:5%;
+      z-index: 2;
+
+    }
+    
+    
+    
   
     .navbar-items {
       display: none; /* Hide the navbar items in mobile view */
@@ -537,15 +649,10 @@
     }
     .flake-container {
       position: relative; /* Ensure proper layout flow */
-      margin-top: -15%; /* Move the image upward to overlap 10% */
+      margin-top: 5%; /* Move the image upward to overlap 10% */
       z-index: 0; /* Keep it behind other elements */
     }
-    @media (max-width: 768px) { /* Define mobile screen threshold */
-      .navbar-items {
-        display: none; /* Hide the navbar items */
-      }
-    }
-    
+
     
     .flake-image {
       position: absolute; /* Position the image precisely */
