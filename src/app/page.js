@@ -129,7 +129,7 @@ useEffect(() => {
       {/* Add the About Image Below */}
       <div className="about-section">
     <img
-      src={isMobile ? "./Assets/aboutmobile.png" : "./ABOUT4.png"}
+      src={isMobile ? "./Assets/aboutmobile.png" : "./Assets/abt.png"}
       alt="About"
       className="about-image"
     />
@@ -143,18 +143,9 @@ useEffect(() => {
           {[...Array(20)].map((_, index) => (
             <div key={index} className="card">
               <div className="card-image">
-                <img src="./Assets/image 8.png" alt={`Card Image ${index + 1}`} />
+                <img src="./Assets/testicard.png" alt={`Card Image ${index + 1}`} />
               </div>
-              <div className="card-content">
-                <div className="inner-card">
-                  <h2>COURSE</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam aliquet nisi nisi, eu lorem ipsum dolor sit amet.
-                  </p>
-                  <div className="date">23/12/2024</div>
-                </div>
-              </div>
+        
             </div>
           ))}
         </div>

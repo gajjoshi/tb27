@@ -124,6 +124,7 @@ height:50vh
     border-radius: 10px; /* Optional: Add rounded corners */
     object-fit: cover; /* Ensure the image scales properly */
     left: 0;
+    width: 50%;
   }
   .testimonials {
     margin-top: 5vh;
@@ -179,7 +180,7 @@ height:50vh
   }
   .about-section {
     display: flex; /* Optional: Aligns the content inside */
-    justify-content: flex-end; /* Aligns the small container to the left */
+    justify-content: center; /* Aligns the small container to the left */
   }
   .content-wrapper {
     display: flex; /* Enables horizontal alignment */
@@ -272,10 +273,7 @@ height:50vh
     top: 10%;
     left: 0;
 
-    /* z-index: 1; */ 
-    /* display: flex;
-    justify-content: center; /* Center the wave image */
-    /* align-items: center; Center the wave image vertically */ 
+
   }
   
   .wave-image {
@@ -325,11 +323,7 @@ height:50vh
 }
 
   .card-container {
-    display: flex;
-    overflow-x: auto; /* Enables horizontal scrolling */
-    gap: 20px; /* Spacing between cards */
-    padding: 20px;
-    z-index: 2;
+
     position: relative; /* Ensure cards appear above the wave */
     
   }
@@ -356,7 +350,7 @@ height:50vh
   
   .card-image {
     z-index: 10;
-    width: 40%;
+    width: 100%;
   }
   
   .card-image img {
@@ -575,7 +569,43 @@ height:50vh
   }
 }
   @media (max-width: 768px) {
-      /* About Image */
+    .card-image {
+      z-index: 10;
+      width: 100%;
+    }
+
+
+    .card-container {
+      display: flex;
+      overflow-x: auto; /* Enables horizontal scrolling */
+      gap: 20px; /* Spacing between cards */
+      padding: 20px;
+      z-index: 2;
+      position: relative; /* Ensure cards appear above the wave */
+    }  
+    
+    .wave-overlay {
+      position: absolute;
+      top: 70%;
+      left: 0;
+  
+  
+    }
+    .testimonials {
+      margin-top: 0;
+      color: white;
+      font-size: 4rem;
+      text-align: center; /* Center-align the text */
+    }
+
+      /* Card Container */
+  .testimonial-section {
+    position: relative;
+    padding: 3%;
+    background-color: black;
+    color: white;
+    overflow: hidden; /* Ensures no unwanted overflow */
+  }
   .about-image {
     top: 0;
     border-radius: 10px; /* Optional: Add rounded corners */
