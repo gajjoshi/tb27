@@ -270,8 +270,9 @@ height:50vh
   
   .wave-overlay {
     position: absolute;
-    top: 10%;
+    top: 50%;
     right: 0;
+    width: 50%;
 
 
   }
@@ -529,6 +530,29 @@ height:50vh
 
 .mobile-menu a:hover {
   color: white;
+}
+
+/* Mobile Menu Expanded Background */
+.menu-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Ensure it appears behind menu items */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.menu-glitter-image {
+  width: 100%; /* Cover the full width of the menu */
+  height: 100%; /* Cover the full height of the menu */
+  object-fit: cover; /* Ensure the image scales properly */
+  opacity: 0.5; /* Optional: Add transparency for better blending */
+  height: 100px;
+  width: auto;
+  right:0;
+
+
 }
 
 /* Menu Toggle Button */

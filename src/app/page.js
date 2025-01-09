@@ -61,6 +61,9 @@ useEffect(() => {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+      <div className="menu-background">
+      <img src="/Assets/glitter.png" alt="Background Glitter" className="menu-glitter-image" />
+    </div>
         <a href="#a">Courses</a>
         <a href="#b">About Us</a>
         <a href="#c">Contact-Us</a>
