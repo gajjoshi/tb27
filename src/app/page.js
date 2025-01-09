@@ -128,8 +128,12 @@ useEffect(() => {
 
       {/* Add the About Image Below */}
       <div className="about-section">
-        <img src="./ABOUT4.png" alt="About" className="about-image" />
-      </div>
+    <img
+      src={isMobile ? "./Assets/aboutmobile.png" : "./ABOUT4.png"}
+      alt="About"
+      className="about-image"
+    />
+  </div>
       <h1 className="testimonials">Testimonials</h1>
       <div className="testimonial-section">
         <div className="wave-overlay">

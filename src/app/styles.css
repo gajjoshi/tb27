@@ -124,6 +124,7 @@ height:50vh
     /* max-width: 1200px; Limit maximum width */
     border-radius: 10px; /* Optional: Add rounded corners */
     object-fit: cover; /* Ensure the image scales properly */
+    left: 0;
   }
   .testimonials {
     margin-top: 5vh;
@@ -179,7 +180,6 @@ height:50vh
   }
   .about-section {
     /* Style for the parent container, if needed */
-    padding: 20px;
     display: flex; /* Optional: Aligns the content inside */
     justify-content: flex-end; /* Aligns the small container to the left */
   }
