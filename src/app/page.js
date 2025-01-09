@@ -67,7 +67,7 @@ useEffect(() => {
         <a href="#a">Courses</a>
         <a href="#b">About Us</a>
         <a href="#c">Contact-Us</a>
-        <a href="#c">Sign Up</a>
+        <a href="/signup">Sign Up</a>
 
       </div>
 
