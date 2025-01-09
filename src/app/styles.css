@@ -453,9 +453,9 @@
   right: 0;
   height: 100%;
   width: 40vw;
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0); /* Semi-transparent black background */
   color: white;
-  padding: 20px;
+  padding: 100px 20px 20px 20px; /* Add top padding to move items lower */
   box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   transform: translateX(100%); /* Hide off-screen initially */
@@ -473,11 +473,13 @@
 /* Menu Items */
 .mobile-menu a {
   text-decoration: none;
-  color: #cfa256;
+  color:white;
   font-size: 1.2rem;
   font-weight: bold;
   padding: 10px;
   transition: color 0.3s ease;
+  background-color: #cfa256;
+  border-radius: 10%;
 }
 
 .mobile-menu a:hover {
@@ -491,7 +493,7 @@
   top: 10px;
   right: 20px;
   background-color: black;
-  border: 2px solid #cfa256;
+  /* border: 2px solid #cfa256; */
   color: white;
   padding: 10px;
   border-radius: 5px;
