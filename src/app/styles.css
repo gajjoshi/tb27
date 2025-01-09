@@ -271,7 +271,7 @@ height:50vh
   .wave-overlay {
     position: absolute;
     top: 10%;
-    left: 0;
+    right: 0;
 
 
   }
@@ -321,12 +321,13 @@ height:50vh
   background-color: #19875a; /* Green background on hover */
   color: white; /* White text on hover */
 }
-
-  .card-container {
-
-    position: relative; /* Ensure cards appear above the wave */
-    
-  }
+.card-container {
+  display: flex;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  gap: 60px; /* Spacing between cards */
+  z-index: 2;
+  position: relative; /* Ensure cards appear above the wave */
+}  
   .card-container::-webkit-scrollbar {
     display: none; /* For Chrome, Safari, and Opera: hides scrollbar */
   }
@@ -334,11 +335,11 @@ height:50vh
   .card {
     flex: 0 0 auto;
     width: 500px;
-    height: 40vh;
+    height: 500px;
     background-color: #19875a;
     color: white;
     display: flex;
-    border-radius: 10px;
+    border-radius: 10%;
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
@@ -416,6 +417,7 @@ height:50vh
     gap: 5%; /* Space between the images */
     margin-top: 7%; /* Add spacing above the container */
     margin-left: 5%; /* Align the container with the toggle buttons */
+    overflow: hidden;
   }
   
   .course-image {
@@ -431,6 +433,13 @@ height:50vh
     border-radius: 10px; /* Optional: Add rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
     margin-right: 900px;
+  }
+  .course-image-mobile {
+    width: 60vw; /* Adjust width for the second image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    left: 900px;
   }
   .footer {
     display: flex;
@@ -569,6 +578,42 @@ height:50vh
   }
 }
   @media (max-width: 768px) {
+
+    .course-images-mobile {
+      display: flex; /* Align items horizontally */
+      gap: 10px; /* Space between the images */
+      overflow-x: auto; /* Enable horizontal scrolling */
+      scroll-behavior: smooth; /* Smooth scrolling effect */
+      padding: 10px; /* Optional: Padding for better spacing */
+    }
+    .course-images-mobile::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Webkit-based browsers */
+    }
+    
+    .course-image2 {
+      flex-shrink: 0; /* Prevent images from shrinking */
+      width: 200px; /* Set a fixed width for the images */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 8px; /* Optional: Rounded corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add shadow effect */
+    }
+    .course-images-container2 {
+      display: flex; /* Flexbox to align images side by side */
+      gap: 5%; /* Space between the images */
+      margin-top: 7%; /* Add spacing above the container */
+
+    }
+    
+
+    .course-images-container {
+      display: flex; /* Flexbox to align images side by side */
+      justify-content: flex-start; /* Align the images to the left */
+      flex-direction: row;
+      align-items: center; /* Vertically align images */
+      gap: 5%; /* Space between the images */
+      margin-top: 20px; /* Add spacing above the container */
+      margin-left: 5%; /* Align the container with the toggle buttons */
+    }
     .card-image {
       z-index: 10;
       width: 100%;
@@ -578,7 +623,7 @@ height:50vh
     .card-container {
       display: flex;
       overflow-x: auto; /* Enables horizontal scrolling */
-      gap: 20px; /* Spacing between cards */
+      gap: 25px; /* Spacing between cards */
       padding: 20px;
       z-index: 2;
       position: relative; /* Ensure cards appear above the wave */
@@ -730,16 +775,16 @@ height:50vh
 
     .card {
       flex: 0 0 auto;
-      width: 150px;
-      height: 200px;
+      width: 100%;
+      height: 20%;
       background-color: #19875a;
       color: white;
       display: flex;
-      border-radius: 10px;
+      border-radius: 10%;
       font-size: 1rem;
       font-weight: bold;
       text-align: center;
-      border: 2px solid #cfa256;
+      /* border: 2px solid #cfa256; */
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(241, 4, 4, 0.2);
       position: relative;
