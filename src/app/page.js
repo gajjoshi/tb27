@@ -13,11 +13,20 @@ const geologica = Geologica({
 export default function Page() {
   // Inside your component
 const [isMobile, setIsMobile] = useState(false);
+const [menuOpen, setMenuOpen] = useState(false);
+
 
 useEffect(() => {
   const handleResize = () => setIsMobile(window.innerWidth <= 768); // Mobile width threshold
   handleResize(); // Check on mount
   window.addEventListener("resize", handleResize); // Listen for window resize
+  return () => window.removeEventListener("resize", handleResize); // Cleanup
+}, []);
+
+useEffect(() => {
+  const handleResize = () => setIsMobile(window.innerWidth <= 768);
+  handleResize(); // Check on mount
+  window.addEventListener("resize", handleResize);
   return () => window.removeEventListener("resize", handleResize); // Cleanup
 }, []);
   // State to track the active toggle
@@ -27,18 +36,36 @@ useEffect(() => {
   const activateToggle = (course) => {
     setActiveToggle(course);
   };
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <div className="background">
-      {/* Navbar */}
-      <div className="navbar">
+  {/* Navbar */}
+  <div className="navbar">
         <img src="/Assets/logo.png" alt="Logo" className="logo" />
-        <div className="navbar-items">
-          <div>Courses</div>
-          <div>About Us</div>
-          <div>Contact Us</div>
-        </div>
+        {!isMobile && (
+          <div className="navbar-items">
+            <div>Courses</div>
+            <div>About Us</div>
+            <div>Contact Us</div>
+          </div>
+        )}
+        {isMobile && (
+          <div className="menu-toggle" onClick={toggleMenu}>
+            ☰ {/* Hamburger Icon */}
+          </div>
+        )}
       </div>
+
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+        <a href="#a">A</a>
+        <a href="#b">B</a>
+        <a href="#c">C</a>
+      </div>
+
 
       {/* Background Image Container */}
       <div className="container">

@@ -444,9 +444,95 @@
     margin-right: auto;
   }
   
-  /* Responsive Styles */
-  @media (max-width: 768px) {
 
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40vw;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  color: white;
+  padding: 20px;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transform: translateX(100%); /* Hide off-screen initially */
+  transition: transform 0.4s ease; /* Smooth slide-in effect */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Open State */
+.mobile-menu.open {
+  transform: translateX(0); /* Slide into view */
+}
+
+/* Menu Items */
+.mobile-menu a {
+  text-decoration: none;
+  color: #cfa256;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  color: white;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: black;
+  border: 2px solid #cfa256;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Animation for opening */
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Animation for closing */
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block; /* Visible only for mobile screens */
+    }
+  
+    .navbar-items {
+      display: none; /* Hide the navbar items in mobile view */
+    }
+    .mobile-menu {
+      display: flex; /* Visible only for mobile screens when open */
+    }
+  
+    .navbar-items {
+      display: none; /* Hide the navbar items in mobile view */
+    }
     .flake-container {
       position: relative; /* Ensure proper layout flow */
       margin-top: -15%; /* Move the image upward to overlap 10% */
@@ -578,12 +664,27 @@
     height: 40px;
     width: auto;
   }
-  @keyframes scroll-cards {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+
+  /* Animation for opening (slide-down) */
+@keyframes slide-down {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
   }
-  
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Animation for closing (slide-up) */
+@keyframes slide-up {
+  0% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}
