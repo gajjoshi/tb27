@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { Geologica } from "next/font/google";
-
+// import '@fortawesome/fontawesome-svg-core/styles.css';
+// import { config } from '@fortawesome/fontawesome-svg-core';
+// config.autoAddCss = false;
 const geologica = Geologica({
   subsets: ["latin"], // Include necessary subsets
   weight: ["400", "700"], // Include the required font weights
