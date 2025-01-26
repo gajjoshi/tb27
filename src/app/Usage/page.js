@@ -37,7 +37,7 @@ const page = () => {
       <div className="sidebar-icon1"></div>
       <div className="sidebar-icon2">
         <h1 style={{ fontWeight: "bold" }}>Hi Alex,</h1>
-        <p>Welcome to TradeNow...</p>
+        <p  style={{ fontSize:"0.8em" }}>Welcome to TradeNow...</p>
         <div className="course-tabs">
           <button className="tab-button active">ALL COURSES</button>
           <button className="tab-button">COURSE 1</button>
