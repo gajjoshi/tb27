@@ -51,54 +51,12 @@ const page = () => {
         <div className="sidebar-icon"></div>
       </div> */}
       <div className="sidebar-icon1"></div>
-      <div className="sidebar-icon2">
-        <h1 style={{ fontWeight: "bold" }}>Hi Alex,</h1>
-        <p  style={{ fontSize:"0.8em" }}>Welcome to TradeNow...</p>
-        <div className="course-tabs">
-          <button className="tab-button active">ALL COURSES</button>
-          <button className="tab-button">COURSE 1</button>
-          <button className="tab-button">COURSE 2</button>
-        </div>
-        <div className="course-card">
-          <div className="course-card-left">
-            <img
-              src="/Assets/course1card.png"
-              alt="Course Background"
-              className="course-background"
-            />
-            <div className="course-content">
-              <h2 className="course-title">Name of the Course</h2>
-              <p className="course-description">Description</p>
-              <div className="progress-bar">
-                <div className="progress-line"></div>
-                <div className="progress-points">
-                  <span className="progress-point active">MODULE 1</span>
-                  <span className="progress-point">MODULE 2</span>
-                  <span className="progress-point">MODULE 3</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="course-card-right">
-            <button className="finish-course-btn">
-              <p>FINISH THE</p> COURSE
-            </button>
-            <div className="weekly-goals">
-              <h3>SET WEEKLY GOALS</h3>
-              <p>learn on chosen days</p>
-              <div className="days">
-                <span className="day active">M</span>
-                <span className="day active">T</span>
-                <span className="day ">W</span>
-                <span className="day active">T</span>
-                <span className="day active">F</span>
-                <span className="day">S</span>
-                <span className="day">S</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div  className="sidebar-icon3">
+      <h1 style={{ fontWeight: "bold" }}>Hi Alex,</h1>
+      <p  style={{ fontSize:"0.8em" }}>Welcome to TradeNow...</p>
+
       </div>
+  
       <div className="sidebar-icon2 course2"> 
         <div className="course-card">
           <div className="course-card-left">
