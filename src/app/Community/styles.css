@@ -198,7 +198,10 @@
     border: 1px solid #19875a;
     padding: 20px;
     box-sizing: border-box;
+    transition: width 1s ease-in-out; /* Smooth width transitions */
+
   }
+  
   .sidebar {
     background-color: #000000;
     position: fixed; /* Changed to fixed */
@@ -223,6 +226,27 @@
   .sidebar-icon2 {
     display: none !important; /* Hide all elements except the background */
   }
+  .chat-header h2 {
+    font-size: 24px;
+    color: white;
+  }
+  
+  .group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #222;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #888;
+  }  
+
+.group-item span {
+  display: inline-block;
+  transition: opacity 0.5s ease-in-out; /* Smooth text fade */
+}
+
 
   .background-container {
     display: block; /* Ensure the background remains visible */

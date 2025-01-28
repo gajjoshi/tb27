@@ -43,13 +43,24 @@ const page = () => {
   ];
   const groups = ["Group 1", "Group 2", "Group 3"]; // List of group names
 
-  // Handle group button click
-  const handleGroupClick = (index) => {
-    setActiveGroup(index); // Toggle active group state
-    if (isMobile) {
-      setLeftDivWidth("40vw"); // Contract width only on mobile
+// Handle group button click
+const handleGroupClick = (index) => {
+  if (isMobile) {
+    if (activeGroup === index) {
+      // If the active button is clicked again, deactivate it and expand
+      setActiveGroup(null); // Deactivate the active group
+      setLeftDivWidth("101vw"); // Expand the width
+    } else {
+      // Otherwise, activate the clicked group and contract the width
+      setActiveGroup(index);
+      setLeftDivWidth("20vw"); // Contract width
     }
-  };
+  } else {
+    // For desktop, only toggle the active group (no width changes)
+    setActiveGroup(index === activeGroup ? null : index);
+  }
+};
+
 
   // Expand the left-div when clicking outside the group buttons
   const handleLeftDivClick = (e) => {
@@ -70,31 +81,52 @@ const page = () => {
         alt="Bottom Left"
         className="rect-image"
       />
+    <div
+  className="left-div"
+  style={{
+    width: leftDivWidth, // Dynamically set width
+    borderRadius: leftDivWidth === "20vw" ? "10px" : "50px", // Decrease border radius in contracted mode
+    transition: "width 1s ease-in-out, border-radius 0.5s ease-in-out", // Smooth transition for width and border radius
+  }}
+  onClick={handleLeftDivClick} // Handle clicks on the left-div
+>
+  <div
+    className="chat-header"
+    style={{
+      opacity: leftDivWidth === "20vw" ? 0 : 1, // Hide in contracted mode
+      transition: "opacity 0.5s ease-in-out", // Smooth fade effect
+    }}
+  >
+    <h2>Community Chat</h2>
+    {/* <div className="chat-section-title">Trading</div> */}
+  </div>
+  <div className="group-list">
+    {groups.map((group, index) => (
       <div
-        className="left-div"
-        style={{
-          width: leftDivWidth, // Dynamically set width
-          transition: "width 1s ease-in-out", // Smooth transition
-        }}
-        onClick={handleLeftDivClick} // Handle clicks on the left-div
+        key={index}
+        className={`group-item ${activeGroup === index ? "active" : ""}`}
+        onClick={() => handleGroupClick(index)}
       >
-       <div className="chat-header">
-          <h2>Community Chat</h2>
-          <div className="chat-section-title">Trading</div>
-        </div>
-        <div className="group-list">
-          {groups.map((group, index) => (
-            <div
-              key={index}
-              className={`group-item ${activeGroup === index ? "active" : ""}`}
-              onClick={() => handleGroupClick(index)}
-            >
-              <span>{group}</span>
-              <span>📌</span>
-            </div>
-          ))}
-        </div>
-        <div className="categories">
+        <span
+          style={{
+            opacity: leftDivWidth === "20vw" ? 0 : 1, // Hide text in contracted mode
+            transition: "opacity 0.5s ease-in-out", // Smooth fade effect
+          }}
+        >
+          {group}
+        </span>
+        <span
+        style={{
+          transform: leftDivWidth === "20vw" ? "translateX(-50px)" : "translateX(0)", // Move pin left
+          transition: "transform 0.5s ease-in-out", // Smooth movement
+        }}
+      >
+        📌
+      </span>
+      </div>
+    ))}
+  </div>
+        {/* <div className="categories">
           <div className="category-item">
             <span>Cryptocurrency</span>
             <span>+</span>
@@ -107,7 +139,7 @@ const page = () => {
             <span>Economics</span>
             <span>+</span>
           </div>
-        </div>
+        </div> */}
       </div>
       <img
         src="/Assets/chat box.png"
