@@ -1,4 +1,6 @@
-import React from "react";
+
+"use client";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import {
   FaHome,
@@ -10,6 +12,20 @@ import {
 } from "react-icons/fa";
 
 const page = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Check initial screen size when the component mounts
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const sidebarIcons = [
     { icon: <FaHome />, label: "Home" },
     { icon: <FaEnvelope />, label: "Messages" },
