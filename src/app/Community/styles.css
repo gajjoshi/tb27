@@ -229,7 +229,7 @@
   .white-container {
     position: absolute;
     top: 0;
-    left: -40vw; /* Start adjacent to the contracted left-div */
+    left: -55vw; /* Start adjacent to the contracted left-div */
     height: 100vh;
     width: 80vw;
     background-color: white;
