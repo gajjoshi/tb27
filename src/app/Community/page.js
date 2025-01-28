@@ -12,7 +12,7 @@ import {
 
 const page = () => {
   const [activeGroup, setActiveGroup] = useState(null); // State to track active group
-  const [leftDivWidth, setLeftDivWidth] = useState("330px"); // Manage width of the left-div
+  const [leftDivWidth, setLeftDivWidth] = useState("330px"); // Default width for desktop
   const [isMobile, setIsMobile] = useState(false); // Track if it's mobile view
 
   // Check for mobile screen on component mount and resize
@@ -21,10 +21,8 @@ const page = () => {
       const isCurrentlyMobile = window.innerWidth <= 768;
       setIsMobile(isCurrentlyMobile);
 
-      // If desktop, reset the width to 330px
-      if (!isCurrentlyMobile) {
-        setLeftDivWidth("330px");
-      }
+      // Set default width based on screen size
+      setLeftDivWidth(isCurrentlyMobile ? "101vw" : "330px");
     };
 
     handleResize(); // Initial check
@@ -45,11 +43,11 @@ const page = () => {
   ];
   const groups = ["Group 1", "Group 2", "Group 3"]; // List of group names
 
-  // Contract the left-div on group button click
+  // Handle group button click
   const handleGroupClick = (index) => {
+    setActiveGroup(index); // Toggle active group state
     if (isMobile) {
-      setActiveGroup(index);
-      setLeftDivWidth("40vw"); // Contract the width
+      setLeftDivWidth("40vw"); // Contract width only on mobile
     }
   };
 
@@ -63,6 +61,8 @@ const page = () => {
     }
   };
 
+
+
   return (
     <div className="background-container">
       <img
@@ -71,13 +71,13 @@ const page = () => {
         className="rect-image"
       />
       <div
-className="left-div"
-style={{
-  width: leftDivWidth, // Dynamically set width
-  transition: "width 1s ease-in-out", // Smooth transition
-}}
-onClick={handleLeftDivClick} // Handle clicks on the left-div
->
+        className="left-div"
+        style={{
+          width: leftDivWidth, // Dynamically set width
+          transition: "width 1s ease-in-out", // Smooth transition
+        }}
+        onClick={handleLeftDivClick} // Handle clicks on the left-div
+      >
        <div className="chat-header">
           <h2>Community Chat</h2>
           <div className="chat-section-title">Trading</div>
