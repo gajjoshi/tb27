@@ -14,6 +14,8 @@ const page = () => {
   const [activeGroup, setActiveGroup] = useState(null); // State to track active group
   const [leftDivWidth, setLeftDivWidth] = useState("330px"); // Default width for desktop
   const [isMobile, setIsMobile] = useState(false); // Track if it's mobile view
+  const [isWhiteContainerVisible, setIsWhiteContainerVisible] = useState(false); // Control the white container visibility
+
 
   // Check for mobile screen on component mount and resize
   useEffect(() => {
@@ -41,7 +43,7 @@ const page = () => {
     { icon: <FaCog />, label: "Settings" },
     { icon: <FaUser />, label: "Profile" },
   ];
-  const groups = ["Group 1", "Group 2", "Group 3"]; // List of group names
+  const groups = ["Crypto", "Stocks", "Forex"]; // List of group names
 
 // Handle group button click
 const handleGroupClick = (index) => {
@@ -50,10 +52,14 @@ const handleGroupClick = (index) => {
       // If the active button is clicked again, deactivate it and expand
       setActiveGroup(null); // Deactivate the active group
       setLeftDivWidth("101vw"); // Expand the width
+      setIsWhiteContainerVisible(false); // Hide the white container
+
     } else {
       // Otherwise, activate the clicked group and contract the width
       setActiveGroup(index);
       setLeftDivWidth("20vw"); // Contract width
+      setIsWhiteContainerVisible(true); // Show the white container
+
     }
   } else {
     // For desktop, only toggle the active group (no width changes)
@@ -81,6 +87,11 @@ const handleGroupClick = (index) => {
         alt="Bottom Left"
         className="rect-image"
       />
+        <img
+    src="/Assets/newflake3.png"
+    alt="Bottom Left Decoration"
+    className="bottom-left-image"
+  />
     <div
   className="left-div"
   style={{
@@ -126,6 +137,13 @@ const handleGroupClick = (index) => {
       </div>
     ))}
   </div>
+
+      {/* White Container */}
+      {isWhiteContainerVisible && (
+        <div className="white-container">
+          {/* <p>This is the white container!</p> */}
+        </div>
+      )}
         {/* <div className="categories">
           <div className="category-item">
             <span>Cryptocurrency</span>
