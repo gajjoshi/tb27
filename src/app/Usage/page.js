@@ -56,7 +56,8 @@ const page = () => {
       <p  style={{ fontSize:"0.8em" }}>Welcome to TradeNow...</p>
 
       </div>
-  
+    {/* <div className="courses-container"> */}
+   
       <div className="sidebar-icon2 course2"> 
         <div className="course-card">
           <div className="course-card-left">
@@ -139,6 +140,7 @@ const page = () => {
           </div>
         </div>
       </div>
+    {/* </div> */}
       <div className="sidebar">
         {sidebarIcons.map((item, index) => (
           <div className="sidebar-icon" key={index}>

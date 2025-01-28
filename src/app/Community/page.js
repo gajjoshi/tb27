@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import {
   FaHome,
@@ -10,6 +11,30 @@ import {
 } from "react-icons/fa";
 
 const page = () => {
+  const [activeGroup, setActiveGroup] = useState(null); // State to track active group
+  const [leftDivWidth, setLeftDivWidth] = useState("330px"); // Manage width of the left-div
+  const [isMobile, setIsMobile] = useState(false); // Track if it's mobile view
+
+  // Check for mobile screen on component mount and resize
+  useEffect(() => {
+    const handleResize = () => {
+      const isCurrentlyMobile = window.innerWidth <= 768;
+      setIsMobile(isCurrentlyMobile);
+
+      // If desktop, reset the width to 330px
+      if (!isCurrentlyMobile) {
+        setLeftDivWidth("330px");
+      }
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const sidebarIcons = [
     { icon: <FaHome />, label: "Home" },
     { icon: <FaEnvelope />, label: "Messages" },
@@ -18,6 +43,26 @@ const page = () => {
     { icon: <FaCog />, label: "Settings" },
     { icon: <FaUser />, label: "Profile" },
   ];
+  const groups = ["Group 1", "Group 2", "Group 3"]; // List of group names
+
+  // Contract the left-div on group button click
+  const handleGroupClick = (index) => {
+    if (isMobile) {
+      setActiveGroup(index);
+      setLeftDivWidth("40vw"); // Contract the width
+    }
+  };
+
+  // Expand the left-div when clicking outside the group buttons
+  const handleLeftDivClick = (e) => {
+    // Prevent expansion if the target is a group button
+    if (e.target.closest(".group-item")) return;
+
+    if (isMobile) {
+      setLeftDivWidth("101vw"); // Expand the width
+    }
+  };
+
   return (
     <div className="background-container">
       <img
@@ -25,25 +70,29 @@ const page = () => {
         alt="Bottom Left"
         className="rect-image"
       />
-      <div className="left-div">
-        <div className="chat-header">
+      <div
+className="left-div"
+style={{
+  width: leftDivWidth, // Dynamically set width
+  transition: "width 1s ease-in-out", // Smooth transition
+}}
+onClick={handleLeftDivClick} // Handle clicks on the left-div
+>
+       <div className="chat-header">
           <h2>Community Chat</h2>
           <div className="chat-section-title">Trading</div>
         </div>
         <div className="group-list">
-          {/* Groups */}
-          <div className="group-item active">
-            <span>Group 1</span>
-            <span>📌</span>
-          </div>
-          <div className="group-item">
-            <span>Group 2</span>
-            <span>📌</span>
-          </div>
-          <div className="group-item">
-            <span>Group 3</span>
-            <span>📌</span>
-          </div>
+          {groups.map((group, index) => (
+            <div
+              key={index}
+              className={`group-item ${activeGroup === index ? "active" : ""}`}
+              onClick={() => handleGroupClick(index)}
+            >
+              <span>{group}</span>
+              <span>📌</span>
+            </div>
+          ))}
         </div>
         <div className="categories">
           <div className="category-item">

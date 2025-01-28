@@ -75,7 +75,6 @@
   position: absolute;
   left: 350px;
   top: 50px;
-  /* transform: translateY(-50%); */
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -241,6 +240,8 @@
   /* height: 100px; */
 }
 
+
+
 .weekly-goals {
   /* margin-top: 1px; */
   background: #072721;
@@ -302,9 +303,11 @@
 }
 .course2{
   margin-top: 5%;
+
 }
 .course3{
   margin-top: 30%;
+
 }
 
 
@@ -327,6 +330,9 @@
     justify-content: center;
 
   }
+
+  
+
 
   .course2{
     margin-top: 5%;
@@ -369,7 +375,7 @@
     top: 25px;
     /* transform: translateY(-50%); */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1px;
     font-size: 1.3em;
   } 
