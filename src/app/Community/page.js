@@ -56,7 +56,7 @@ const page = () => {
       } else {
         // Otherwise, activate clicked group and contract
         setActiveGroup(index);
-        setLeftDivWidth("20vw");
+        setLeftDivWidth("15vw");
   
         // Delay white container appearance for a smooth effect
         setTimeout(() => {
@@ -101,7 +101,7 @@ const page = () => {
   className="left-div"
   style={{
     width: leftDivWidth, // Dynamically set width
-    borderRadius: leftDivWidth === "20vw" ? "10px" : "50px", // Decrease border radius in contracted mode
+    borderRadius: leftDivWidth === "15vw" ? "10px" : "50px", // Decrease border radius in contracted mode
     transition: "width 1s ease-in-out, border-radius 0.5s ease-in-out", // Smooth transition for width and border radius
   }}
   onClick={handleLeftDivClick} // Handle clicks on the left-div
@@ -109,7 +109,7 @@ const page = () => {
   <div
     className="chat-header"
     style={{
-      opacity: leftDivWidth === "20vw" ? 0 : 1, // Hide in contracted mode
+      opacity: leftDivWidth === "15vw" ? 0 : 1, // Hide in contracted mode
       transition: "opacity 0.5s ease-in-out", // Smooth fade effect
     }}
   >
@@ -125,7 +125,7 @@ const page = () => {
       >
         <span
           style={{
-            opacity: leftDivWidth === "20vw" ? 0 : 1, // Hide text in contracted mode
+            opacity: leftDivWidth === "15vw" ? 0 : 1, // Hide text in contracted mode
             transition: "opacity 0.5s ease-in-out", // Smooth fade effect
           }}
         >
@@ -133,7 +133,7 @@ const page = () => {
         </span>
         <span
         style={{
-          transform: leftDivWidth === "20vw" ? "translateX(-50px)" : "translateX(0)", // Move pin left
+          transform: leftDivWidth === "15vw" ? "translateX(-55px)" : "translateX(0)", // Move pin left
           transition: "transform 0.5s ease-in-out", // Smooth movement
         }}
       >
