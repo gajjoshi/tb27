@@ -73,12 +73,14 @@ const page = () => {
 
   // Expand the left-div when clicking outside the group buttons
   const handleLeftDivClick = (e) => {
-    // Prevent expansion if the target is a group button
-    if (e.target.closest(".group-item")) return;
+    // if (e.target.closest(".group-item") || e.target.closest(".white-container")) return;
 
-    if (isMobile) {
-      setLeftDivWidth("101vw"); // Expand the width
-    }
+    // // Prevent expansion if the target is a group button
+    // if (e.target.closest(".group-item")) return;
+
+    // if (isMobile) {
+    //   setLeftDivWidth("101vw"); // Expand the width
+    // }
   };
 
 
@@ -148,7 +150,8 @@ const page = () => {
       <input type="text" placeholder="Type Here" />
       <button>
         <FaPaperPlane />
-      </button>    </div>
+      </button>  
+        </div>
         </div>
       )}
         {/* <div className="categories">
