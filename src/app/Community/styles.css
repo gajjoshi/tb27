@@ -207,6 +207,53 @@
 
   }
   
+  .entry-box {
+    position:relative;
+    bottom: 20px;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    border-radius:10px;
+    border: 1px solid #000000; /* Matching aesthetic */
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    top: 80%;
+    left: 47%;
+  }
+  
+  .entry-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    z-index: 300;
+    background-color: #ffffff;
+    top: 20% ;
+    left:-50vw
+  }
+  
+  .entry-box button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    color: #135a42;
+  }
+  .entry-box button:hover {
+    background-color: #135a42;
+  }
+  
   .left-div {
     position: absolute;
     left:-2px;
@@ -237,7 +284,9 @@
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
     z-index: 2; /* Ensure it's above the left-div */
     transform: translateX(100%); /* Start off-screen */
-    transition: transform 1s ease-in-out; /* Smooth sliding animation */
+    /* transition: transform 3s ease-in-out;  */
+    transition:0.7s ease-in-out; /* Smooth sliding animation */
+
   }
   
   .white-container.visible {

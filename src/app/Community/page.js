@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "./styles.css";
+import { FaPaperPlane } from "react-icons/fa";
+
 import {
   FaHome,
   FaPlus,
@@ -44,28 +46,29 @@ const page = () => {
     { icon: <FaUser />, label: "Profile" },
   ];
   const groups = ["Crypto", "Stocks", "Forex"]; // List of group names
-
-// Handle group button click
-const handleGroupClick = (index) => {
-  if (isMobile) {
-    if (activeGroup === index) {
-      // If the active button is clicked again, deactivate it and expand
-      setActiveGroup(null); // Deactivate the active group
-      setLeftDivWidth("101vw"); // Expand the width
-      setIsWhiteContainerVisible(false); // Hide the white container
-
+  const handleGroupClick = (index) => {
+    if (isMobile) {
+      if (activeGroup === index) {
+        // If active group clicked again, deactivate and expand
+        setActiveGroup(null);
+        setLeftDivWidth("101vw");
+        setIsWhiteContainerVisible(false);
+      } else {
+        // Otherwise, activate clicked group and contract
+        setActiveGroup(index);
+        setLeftDivWidth("20vw");
+  
+        // Delay white container appearance for a smooth effect
+        setTimeout(() => {
+          setIsWhiteContainerVisible(true);
+        }, 400); // Delay slightly to match the sliding animation
+      }
     } else {
-      // Otherwise, activate the clicked group and contract the width
-      setActiveGroup(index);
-      setLeftDivWidth("20vw"); // Contract width
-      setIsWhiteContainerVisible(true); // Show the white container
-
+      // For desktop, toggle the active group
+      setActiveGroup(index === activeGroup ? null : index);
     }
-  } else {
-    // For desktop, only toggle the active group (no width changes)
-    setActiveGroup(index === activeGroup ? null : index);
-  }
-};
+  };
+  
 
 
   // Expand the left-div when clicking outside the group buttons
@@ -141,7 +144,11 @@ const handleGroupClick = (index) => {
       {/* White Container */}
       {isWhiteContainerVisible && (
         <div className="white-container">
-          {/* <p>This is the white container!</p> */}
+          <div className="entry-box">
+      <input type="text" placeholder="Type Here" />
+      <button>
+        <FaPaperPlane />
+      </button>    </div>
         </div>
       )}
         {/* <div className="categories">
