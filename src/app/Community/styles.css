@@ -285,13 +285,18 @@
     left: -55vw; /* Start adjacent to the contracted left-div */
     height: 100vh;
     width: 80vw;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.2); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(5px);
+    /* background-color: white; */
     border-radius: 25px 0 0 25px; /* Rounded corners on the left side */
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
     z-index: 2; /* Ensure it's above the left-div */
     transform: translateX(100%); /* Start off-screen */
     /* transition: transform 3s ease-in-out;  */
     transition:0.7s ease-in-out; /* Smooth sliding animation */
+    border: 1px solid #19875a;
+
 
   }
   
@@ -302,7 +307,7 @@
   
   .sidebar {
     background-color: #000000;
-    position: fixed; /* Changed to fixed */
+    position: fixed; /* Cged to fixed */
     left: 0px;
     /* transform: translateY(-50%); */
     display: flex;
