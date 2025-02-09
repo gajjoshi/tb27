@@ -55,3 +55,7 @@ def create_user(request):
 
     # If not a POST request, return a 405 Method Not Allowed response
     return JsonResponse({'error': 'Method not allowed.'}, status=405)
+
+def check(request):
+    return JsonResponse({"message": "Hello"})
+

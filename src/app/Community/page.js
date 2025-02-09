@@ -146,13 +146,17 @@ const page = () => {
       {/* White Container */}
       {isWhiteContainerVisible && (
         <div className="white-container">
-          <div className="entry-box">
-      <input type="text" placeholder="Type Here" />
-      <button>
-        <FaPaperPlane />
-      </button>  
-        </div>
-        </div>
+  {activeGroup !== null && (
+    <div className="group-title">{groups[activeGroup]}</div> 
+  )}
+  <div className="entry-box">
+    <input type="text" placeholder="Type Here" />
+    <button>
+      <FaPaperPlane />
+    </button>  
+  </div>
+</div>
+
       )}
         {/* <div className="categories">
           <div className="category-item">

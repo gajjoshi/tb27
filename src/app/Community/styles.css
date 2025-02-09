@@ -210,6 +210,8 @@
     height: auto; /* Maintain aspect ratio */
     z-index:1; /* Ensure it's below other content */
     opacity: 0.8; /* Optional: Adjust visibility */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(5px);
 
 
   }
@@ -289,21 +291,41 @@
     background-color: rgba(0, 0, 0, 0.2); 
     backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(5px);
-    /* background-color: white; */
+    background-color: white;
     border-radius: 25px 0 0 25px; /* Rounded corners on the left side */
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
-    z-index: 2; /* Ensure it's above the left-div */
+    z-index: 5000; /* Ensure it's above background */
     transform: translateX(100%); /* Start off-screen */
-    /* transition: transform 3s ease-in-out;  */
-    transition:0.7s ease-in-out; /* Smooth sliding animation */
+    transition:0.7s ease-in-out; 
     border: 1px solid #19875a;
+    overflow: hidden; /* Ensure the blur stays within bounds */
 
   }
-  
+  .white-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8%; /* Adjust this percentage for more/less green area */
+    background: #19875a; /* Green color */
+    z-index: 4000;
+}
   .white-container.visible {
     transform: translateX(0); /* Slide into view */
   }
-  
+  .group-title {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    z-index: 5000;
+    text-transform: uppercase; /* Optional: Makes text uppercase */
+}
+
   
   .sidebar {
     background-color: #000000;
