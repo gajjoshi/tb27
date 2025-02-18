@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { FaPaperPlane } from "react-icons/fa";
+import { useRouter } from "next/navigation"; // For redirecting
+
 
 import {
   FaHome,
@@ -17,6 +19,26 @@ const page = () => {
   const [leftDivWidth, setLeftDivWidth] = useState("330px"); // Default width for desktop
   const [isMobile, setIsMobile] = useState(false); // Track if it's mobile view
   const [isWhiteContainerVisible, setIsWhiteContainerVisible] = useState(false); // Control the white container visibility
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState(""); // ✅ Define message state
+  const [messages, setMessages] = useState([]); // ✅ Add this line to store messages
+
+
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("username");
+    if (storedEmail) {
+      setEmail(storedEmail);
+    } else {
+      router.push("/signup"); // Redirect to login if no email is found
+    }
+  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("username"); // Remove email from localStorage
+    router.push("/signup"); // Redirect to login page
+  };
+
 
 
   // Check for mobile screen on component mount and resize
@@ -36,6 +58,36 @@ const page = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const fetchMessages = async (group) => {
+    console.log("Fetching messages");
+    if (!group) return; // ✅ Prevent fetching if no group is selected
+
+    console.log(`Fetching messages for group: ${group}`); // ✅ Debug Log
+
+    try {
+        const response = await fetch(`http://127.0.0.1:8000/get_messages?group=${group}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        console.log("Response status:", response.status); // ✅ Log response status
+
+        const data = await response.json();
+        console.log("Response data:", data); // ✅ Log full response data
+
+        if (response.ok) {
+            setMessages(data.messages);
+            console.log(`Messages for ${group} set in state:`, data.messages);
+        } else {
+            console.error("Failed to fetch messages:", data);
+        }
+    } catch (error) {
+        console.error("Error fetching messages:", error);
+    }
+};
 
   const sidebarIcons = [
     { icon: <FaHome />, label: "Home" },
@@ -67,6 +119,9 @@ const page = () => {
       // For desktop, toggle the active group
       setActiveGroup(index === activeGroup ? null : index);
     }
+    const selectedGroup = groups[index]; // ✅ Get the correct group name
+    console.log("Group clicked:", selectedGroup);
+    fetchMessages(selectedGroup); // ✅ Fetch only messages for selected group
   };
   
 
@@ -81,6 +136,41 @@ const page = () => {
     // if (isMobile) {
     //   setLeftDivWidth("101vw"); // Expand the width
     // }
+  };
+  const handleSendMessage = async () => {
+    
+    if (!message.trim()) return; // Prevent empty messages
+
+    const data = {
+      username: email,
+      message: message,
+      group: groups[activeGroup], // Send selected group name
+
+    };
+    console.log(data);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/save_message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log("Message saved:", result);
+        setMessage(""); // Clear input field after sending
+        setTimeout(() => {
+          fetchMessages(groups[activeGroup]);
+      }, 200);
+      } else {
+        console.error("Failed to save message:", result);
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
 
 
@@ -97,6 +187,13 @@ const page = () => {
     alt="Bottom Left Decoration"
     className="bottom-left-image"
   />
+  {/* Logout Button */}
+  <button
+        onClick={handleLogout}
+        className="logout-button"
+      >
+        Logout
+      </button>
     <div
   className="left-div"
   style={{
@@ -147,12 +244,33 @@ const page = () => {
       {isWhiteContainerVisible && (
         <div className="white-container">
   {activeGroup !== null && (
+    <>
     <div className="group-title">{groups[activeGroup]}</div> 
+    <div className="messages-list">
+            {messages.length > 0 ? (
+              messages.map((msg, index) => (
+                <div key={index} className="message">
+                  <strong>{msg.username}</strong>: {msg.message}
+                  <div className="timestamp">{msg.timestamp}</div>
+                </div>
+              ))
+            ) : (
+              <p>No messages yet.</p>
+            )}
+          </div>
+    </>
+
+    
   )}
   <div className="entry-box">
-    <input type="text" placeholder="Type Here" />
-    <button>
-      <FaPaperPlane />
+    
+  <input
+          type="text"
+          placeholder="Type Here"
+          value={message} // ✅ Bind input value to `message` state
+          onChange={(e) => setMessage(e.target.value)} // ✅ Update state on change
+        />    <button onClick={handleSendMessage}>
+    <FaPaperPlane />
     </button>  
   </div>
 </div>

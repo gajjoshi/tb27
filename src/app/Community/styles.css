@@ -190,6 +190,24 @@
     z-index: 1; /* Ensure it's below other content */
     opacity: 0.8; /* Optional: Adjust visibility */
   }
+  .logout-button {
+    position: absolute;
+    top: 20px; /* Adjust top spacing */
+    right: 20px; /* Adjust right spacing */
+    background-color: #19875a; /* Match the theme color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #145a42; /* Darker shade for hover */
+  }
   
 
 
@@ -217,8 +235,8 @@
   }
   
   .entry-box {
-    position:relative;
-    bottom: 20px;
+    position:absolute;
+    bottom: 150px;
     transform: translateX(-50%);
     width: 90%;
     height: 50px;
@@ -232,9 +250,69 @@
     color: #333;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
-    top: 78%;
-    left: 47%;
+    left: 49%;
   }
+  .messages-list {
+    position: relative;
+    width: 100%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    display: flex;
+    flex-direction: column-reverse; /* New messages appear at the bottom */
+    margin-top: 50px; /* ✅ Pushes messages lower */
+    max-height: calc(100vh - 270px); /* ✅ Adjusts dynamically */
+
+
+}
+
+/* Individual message styling */
+.message {
+    background-color: #f0f0f0; /* Light grey */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    word-wrap: break-word;
+    /* margin-top: 100px; */
+}
+
+/* Alternate message style */
+.message:nth-child(even) {
+    background-color: #e6f7ff; /* Light blue */
+}
+
+/* Username styling */
+.message strong {
+    color: #19875a; /* Green color for names */
+    font-weight: bold;
+}
+
+/* Timestamp styling */
+.timestamp {
+    font-size: 12px;
+    color: #777;
+    margin-top: 2px;
+    text-align: right;
+}
+
+/* Scrollbar styling for better UI */
+.messages-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 5px;
+}
+
+.messages-list::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
   
   .entry-box input {
     flex: 1;

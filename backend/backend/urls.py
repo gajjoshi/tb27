@@ -22,6 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('create_user', views.create_user),
     path('check', views.check),
+    path('save_message', views.save_message),  # New route to save messages
+    path('get_messages', views.get_messages),  # ✅ New route to fetch messages
+
+
 
 
 
