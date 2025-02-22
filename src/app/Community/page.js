@@ -66,7 +66,7 @@ const page = () => {
     console.log(`Fetching messages for group: ${group}`); // ✅ Debug Log
 
     try {
-        const response = await fetch(`http://127.0.0.1:8000/get_messages?group=${group}`, {
+        const response = await fetch(`https://tradingbotgaj-63bedfbb34ac.herokuapp.com/get_messages?group=${group}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -150,7 +150,7 @@ const page = () => {
     console.log(data);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/save_message", {
+      const response = await fetch("https://tradingbotgaj-63bedfbb34ac.herokuapp.com/save_message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -247,17 +247,21 @@ const page = () => {
     <>
     <div className="group-title">{groups[activeGroup]}</div> 
     <div className="messages-list">
-            {messages.length > 0 ? (
-              messages.map((msg, index) => (
-                <div key={index} className="message">
-                  <strong>{msg.username}</strong>: {msg.message}
-                  <div className="timestamp">{msg.timestamp}</div>
-                </div>
-              ))
-            ) : (
-              <p>No messages yet.</p>
-            )}
-          </div>
+    {messages.length > 0 ? (
+        messages.map((msg, index) => (
+            <div
+                key={index}
+                className={`message ${msg.username === email ? "my-message" : "other-message"}`}
+            >
+                <strong>{msg.username}</strong>: {msg.message}
+                <div className="timestamp">{msg.timestamp}</div>
+            </div>
+        ))
+    ) : (
+        <p>No messages yet.</p>
+    )}
+</div>
+
     </>
 
     

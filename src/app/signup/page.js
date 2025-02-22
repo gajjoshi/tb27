@@ -16,7 +16,7 @@ const Page = () => {
     }
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/create_user', {
+      const response = await fetch('https://tradingbotgaj-63bedfbb34ac.herokuapp.com/create_user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
