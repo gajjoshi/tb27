@@ -300,13 +300,13 @@ const page = () => {
         alt="chatbox img"
         className="sidebar-icon2"
       />
-      <div className="sidebar">
-        {sidebarIcons.map((item, index) => (
+      {/* <div className="sidebar"> */}
+        {/* {sidebarIcons.map((item, index) => (
           <div className="sidebar-icon" key={index}>
             {item.icon}
           </div>
         ))}
-      </div>
+      </div> */}
       <img src="/Assets/top.png" alt="Top Right" className="top-right-image" />
     </div>
   );
