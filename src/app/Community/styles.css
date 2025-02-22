@@ -411,6 +411,8 @@
     height: 8%; /* Adjust this percentage for more/less green area */
     background: #19875a; /* Green color */
     z-index: 4000;
+    overflow: hidden; /* ✅ Ensures the container doesn’t exceed screen */
+
 }
   .white-container.visible {
     transform: translateX(0); /* Slide into view */
@@ -479,5 +481,7 @@
     background-color: #000000; /* Ensure background color remains */
     height: 100vh; /* Full height for the background */
     width: 100%; /* Full width for the background */
+    height: 100vh; /* ✅ Ensures full viewport height */
+    overflow: hidden; /* ✅ Prevents unwanted scrolling */
   }
 }
