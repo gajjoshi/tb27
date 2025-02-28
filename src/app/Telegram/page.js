@@ -42,11 +42,11 @@ const page = () => {
           alt="chatbox img"
           className="sidebar-icon2"
         />
-        <img
+        {/* <img
           src="/Assets/name.png"
           alt="chatbox img"
           className="sidebar-icon2"
-        />
+        /> */}
         <div className="chat-input">
           <button className="icon-button">
             <FontAwesomeIcon icon={faSmile} />
