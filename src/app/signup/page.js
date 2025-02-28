@@ -33,7 +33,7 @@ const Page = () => {
                 // Store username in localStorage
                 localStorage.setItem('username', username);
                 // Use window.location to navigate to /user page
-                window.location.href = '/Community';  // Redirect to /user page
+                window.location.href = '/Usage';  // Redirect to /user page
       } else {
         alert(`Error: ${data.message || 'Something went wrong'}`);
       }

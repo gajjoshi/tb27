@@ -1,6 +1,9 @@
 
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
+import { useRouter } from "next/navigation";
+
+
 import "./styles.css";
 import {
   FaHome,
@@ -12,6 +15,8 @@ import {
 } from "react-icons/fa";
 
 const page = () => {
+  const router = useRouter();
+
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -27,13 +32,14 @@ const page = () => {
     };
   }, []);
   const sidebarIcons = [
-    { icon: <FaHome />, label: "Home" },
-    { icon: <FaEnvelope />, label: "Messages" },
-    { icon: <FaTelegramPlane />, label: "Send" },
-    { icon: <FaPlus />, label: "Add" },
-    { icon: <FaCog />, label: "Settings" },
-    { icon: <FaUser />, label: "Profile" },
+    { icon: <FaHome />, label: "Home", path: "/Usage" },
+    { icon: <FaEnvelope />, label: "Messages", path: "/Community" },
+    { icon: <FaTelegramPlane />, label: "Send", path: "/Telegram" },
+    // { icon: <FaPlus />, label: "Add", path: "/add" },
+    // { icon: <FaCog />, label: "Settings", path: "/settings" },
+    { icon: <FaUser />, label: "Profile", path: "/user" },
   ];
+  
   return (
     <div className="background-container">
       {/* <div className="rectangle-container"></div> */}
@@ -142,11 +148,16 @@ const page = () => {
       </div>
     {/* </div> */}
       <div className="sidebar">
-        {sidebarIcons.map((item, index) => (
-          <div className="sidebar-icon" key={index}>
-            {item.icon}
-          </div>
-        ))}
+      {sidebarIcons.map((item, index) => (
+  <div
+    className="sidebar-icon"
+    key={index}
+    onClick={() => router.push(item.path)}
+    style={{ cursor: "pointer" }}
+  >
+    {item.icon}
+  </div>
+))}
       </div>
       <img src="/Assets/top.png" alt="Top Right" className="top-right-image" />
     </div>
