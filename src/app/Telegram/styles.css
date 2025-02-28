@@ -163,6 +163,15 @@
   top: 100px;
   left: 100px;
 }
+.messages-container::-webkit-scrollbar {
+width: 5px; /* Reduce scrollbar width */
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+background: #ccc;
+border-radius: 10px;
+}
+
 
 .message {
   background-color: rgb(255, 255, 255);
@@ -171,7 +180,8 @@
   max-width: 70%;
   word-wrap: break-word;
   color: #000000;
-  border: 2px solid #000000;
+  border: 2px solid #19875A;
+  font-size: 0.5rem;
 
 }
 

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef} from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,6 +17,8 @@ import {
 } from "react-icons/fa";
 const page = () => {
   const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null); // Ref to track last message
+
 
   useEffect(() => {
     let socket;
@@ -25,6 +27,8 @@ const page = () => {
   
       socket.onopen = () => console.log("WebSocket connected!");
       socket.onmessage = (event) => setMessages((prev) => [...prev, event.data]);
+
+      
       socket.onerror = (error) => console.error("WebSocket Error:", error);
       socket.onclose = () => {
         console.log("WebSocket Disconnected. Reconnecting in 3s...");
@@ -35,7 +39,12 @@ const page = () => {
     connectWebSocket();
     return () => socket && socket.close();
   }, []);
-  
+  // Function to scroll to the last message
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+
   const sidebarIcons = [
     { icon: <FaHome />, label: "Home" },
     { icon: <FaEnvelope />, label: "Messages" },
