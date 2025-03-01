@@ -23,7 +23,7 @@ const page = () => {
   useEffect(() => {
     let socket;
     const connectWebSocket = () => {
-      socket = new WebSocket("wss://31b7-42-106-240-45.ngrok-free.app");
+      socket = new WebSocket("wss://7695-103-133-248-68.ngrok-free.app");
   
       socket.onopen = () => console.log("WebSocket connected!");
       socket.onmessage = (event) => setMessages((prev) => [...prev, event.data]);
