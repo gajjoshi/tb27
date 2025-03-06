@@ -287,10 +287,33 @@
 
 /* Username styling */
 .message strong {
-    color: #19875a; /* Green color for names */
+    color: #4c8719; /* Green color for names */
     font-weight: bold;
 }
+/* ✅ Messages Sent by User */
+.my-message {
+  align-self: flex-end; /* ✅ Align to right */
+  /* background-color: #19875A;  */
+  background-color: #67b820; /* Green color for names */
 
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
+  text-align: right;
+}
+
+/* ✅ Messages Sent by Others */
+.other-message {
+  align-self: flex-start; /* ✅ Align to left */
+  background-color: #f1f1f1;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
 /* Timestamp styling */
 .timestamp {
     font-size: 12px;

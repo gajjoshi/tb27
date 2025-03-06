@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect ,useRef} from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,6 +16,35 @@ import {
   FaUser,
 } from "react-icons/fa";
 const page = () => {
+  const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null); // Ref to track last message
+
+
+  useEffect(() => {
+    let socket;
+    const connectWebSocket = () => {
+      socket = new WebSocket("wss://68f6-111-125-210-210.ngrok-free.app/");
+  
+      socket.onopen = () => console.log("WebSocket connected!");
+      socket.onmessage = (event) => setMessages((prev) => [...prev, event.data]);
+
+      
+      socket.onerror = (error) => console.error("WebSocket Error:", error);
+      socket.onclose = () => {
+        console.log("WebSocket Disconnected. Reconnecting in 3s...");
+        setTimeout(connectWebSocket, 3000);
+      };
+    };
+  
+    connectWebSocket();
+    return () => socket && socket.close();
+  }, []);
+  // Function to scroll to the last message
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+
   const sidebarIcons = [
     { icon: <FaHome />, label: "Home" },
     { icon: <FaEnvelope />, label: "Messages" },
@@ -37,16 +67,20 @@ const page = () => {
           alt="Top Right"
           className="top-right-image"
         />
+
+
         <img
           src="/Assets/chat box.png"
           alt="chatbox img"
           className="sidebar-icon2"
         />
-        <img
-          src="/Assets/name.png"
-          alt="chatbox img"
-          className="sidebar-icon2"
-        />
+                <div className="message-section">
+        <div className="messages-container">
+          {messages.map((msg, index) => (
+            <div key={index} className="message">{msg}</div>
+          ))}
+        </div>
+
         <div className="chat-input">
           <button className="icon-button">
             <FontAwesomeIcon icon={faSmile} />
@@ -59,6 +93,7 @@ const page = () => {
             <FontAwesomeIcon icon={faPaperPlane} />
           </button>
           {/* <button><i class="fa fa-paper-plane"></i></button> */}
+        </div>
         </div>
         <div className="sidebar">
           {sidebarIcons.map((item, index) => (

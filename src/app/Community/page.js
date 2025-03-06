@@ -247,17 +247,21 @@ const page = () => {
     <>
     <div className="group-title">{groups[activeGroup]}</div> 
     <div className="messages-list">
-            {messages.length > 0 ? (
-              messages.map((msg, index) => (
-                <div key={index} className="message">
-                  <strong>{msg.username}</strong>: {msg.message}
-                  <div className="timestamp">{msg.timestamp}</div>
-                </div>
-              ))
-            ) : (
-              <p>No messages yet.</p>
-            )}
-          </div>
+    {messages.length > 0 ? (
+        messages.map((msg, index) => (
+            <div
+                key={index}
+                className={`message ${msg.username === email ? "my-message" : "other-message"}`}
+            >
+                <strong>{msg.username}</strong>: {msg.message}
+                <div className="timestamp">{msg.timestamp}</div>
+            </div>
+        ))
+    ) : (
+        <p>No messages yet.</p>
+    )}
+</div>
+
     </>
 
     
