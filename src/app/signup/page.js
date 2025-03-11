@@ -33,7 +33,7 @@ const Page = () => {
                 // Store username in localStorage
                 localStorage.setItem('username', username);
                 // Use window.location to navigate to /user page
-                window.location.href = '/Usage';  // Redirect to /user page
+                window.location.href = '/user';  // Redirect to /user page
       } else {
         alert(`Error: ${data.message || 'Something went wrong'}`);
       }
@@ -77,7 +77,7 @@ const Page = () => {
           Register
         </button>
         <p>
-          Already signed in? <a href="#">Continue here.</a>
+          Already signed in? <a href="/login">Continue here.</a>
         </p>
         <hr />
         <div className="social-buttons">
