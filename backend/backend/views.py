@@ -14,6 +14,45 @@ from pymongo import MongoClient
 # Assuming you have already set up the MongoDB client and database
 
 db = client['tb27']
+
+
+@csrf_exempt
+def authenticate_user(request):
+    if request.method == 'POST':
+        try:
+            # Parse the JSON body
+            body = json.loads(request.body)
+
+            # Extract username and password from the request body
+            username = body.get('username')
+            password = body.get('password')
+
+            if not username or not password:
+                return JsonResponse({'error': 'Username and password are required.'}, status=400)
+
+            print(f"Authenticating Username: {username}")
+            print(f"Password: {password}")
+
+            # Access the users collection
+            collection = db['users']  # Ensure this is a dedicated users collection
+
+            # Find the user in the database
+            user = collection.find_one({'username': username, 'password': password})
+
+            if user:
+                return JsonResponse({'message': 'Login successful.', 'username': username}, status=200)
+            else:
+                return JsonResponse({'error': 'Invalid username or password.'}, status=401)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON format.'}, status=400)
+
+        except Exception as e:
+            print(f"Error: {str(e)}")
+            return JsonResponse({'error': 'An error occurred while authenticating.', 'details': str(e)}, status=500)
+
+    # If not a POST request, return a 405 Method Not Allowed response
+    return JsonResponse({'error': 'Method not allowed.'}, status=405)
 @csrf_exempt
 def create_user(request):
     if request.method == 'POST':

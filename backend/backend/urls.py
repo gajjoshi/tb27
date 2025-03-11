@@ -20,6 +20,8 @@ from backend import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+        path('authenticate_user', views.authenticate_user),  # Updated: Replace create_user with authenticate_user
+
     path('create_user', views.create_user),
     path('check', views.check),
     path('save_message', views.save_message),  # New route to save messages
